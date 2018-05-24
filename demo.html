@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    a:link,a:visited,a:hover,a:active {
+      color: #0366D6;
+    }
+  </style>
+</head>
+<body>
+<h4><a href="https://github.com/yeild/pager">&lt; GitHub</a></h4>
+<div id="pageContainer"></div>
+<script>
+  if (!window.Page) {
+    document.write('<script src="./dist/pager.min.js"><\/script>')
+  }
+</script>
+<script>
+  Pager.init({
+    el: document.getElementById('pageContainer'),
+    current: 1,
+    pageSize: 10,
+    total: 100,
+    showJumper: false,
+    sizeChangeable: false,
+    showTotal: false,
+    onChange: function () {
+      
+    },
+    onSizeChange: function () {
+      
+    }
+  })
+
+</script>
+</body>
+</html>

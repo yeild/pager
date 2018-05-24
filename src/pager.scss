@@ -1,0 +1,33 @@
+$black: #495060;
+$color-blue: #1890ff;
+
+.page-cell {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 6px;
+  font-size: 14px;
+  font-family: Arial;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  color: $black;
+  background: #fff;
+  text-align: center;
+  user-select: none;
+  list-style: none;
+  cursor: pointer;
+
+  &:hover, &-active {
+    color: $color-blue;
+    border-color: $color-blue;
+  }
+}
+
+.page-prev, .page-next {
+  font-family: cursive
+}
+
+.page-jumpPrev, .page-jumpNext {
+  font-family: fantasy
+}
