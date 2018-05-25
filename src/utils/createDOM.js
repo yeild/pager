@@ -1,4 +1,5 @@
 import { updatePage, toggleQuickBtn } from './handler'
+import { addClass } from './classes'
 
 let ctx = {}
 const pageMap = {}
@@ -11,6 +12,9 @@ function createPageBtn (text, className = '') {
     li.className += 'page-btn-active'
     pageMap.active = li
   }
+  if (text > ctx.pageCount) {
+    addClass(li, 'page-btn-hidden')
+  }
   li.addEventListener('click', function (e) {
     updatePage(e.target, pageMap, ctx)
   })
@@ -19,6 +23,7 @@ function createPageBtn (text, className = '') {
 
 function createPrev () {
   const li = createPageBtn('<', 'page-prev')
+  li.title = '上一页'
   li.diff = -1
   pageMap.prev = li
   return li
@@ -32,6 +37,7 @@ function createHome() {
 
 function createJumpPrev() {
   const li = createPageBtn('···', 'page-jumpPrev')
+  li.title = '向前 5 页'
   li.diff = -5
   pageMap.jumpPrev = li
   return li
@@ -55,6 +61,7 @@ function createMain() {
 
 function createJumpNext () {
   const li = createPageBtn('···', 'page-jumpNext')
+  li.title = '向后 5 页'
   li.diff = 5
   pageMap.jumpNext = li
   return li
@@ -68,9 +75,35 @@ function createEnd() {
 
 function createNext() {
   const li = createPageBtn('>', 'page-next')
+  li.title = '下一页'
   li.diff = 1
   pageMap.next = li
   return li
+}
+
+function createQuickJumper() {
+  const span = document.createElement('span')
+  span.className = 'page-quickJumper'
+  span.innerHTML = '跳至第'
+  const input = document.createElement('input')
+  input.className = 'page-quickJumper-input'
+
+  input.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      let value = e.target.value
+      if (/^\d+$/.test(value)) {
+        value = Number(value)
+        if (value > ctx.pageCount) value = ctx.pageCount
+        if (value < 1) value = 1
+        updatePage(value, pageMap, ctx)
+      }
+      e.target.value = ''
+    }
+  })
+
+  span.appendChild(input)
+  span.appendChild(document.createTextNode('页'))
+  return span
 }
 
 export function createDOM (context) {
@@ -83,6 +116,7 @@ export function createDOM (context) {
   fragment.appendChild(createJumpNext())
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
+  fragment.appendChild(createQuickJumper())
   toggleQuickBtn(pageMap)
   return fragment
 }

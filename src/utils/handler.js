@@ -51,8 +51,14 @@ function render(pageMap, { current, pageCount, }) {
   toggleQuickBtn(pageMap)
 }
 
-export function updatePage (el, pageMap, ctx) {
-  ctx.current = el.diff ? getCurrent(ctx.current, el.diff, ctx.pageCount) : Number(el.innerHTML)
+export function updatePage (current, pageMap, ctx) {
+  const before = ctx.current
+  if (typeof current === 'number') {
+    ctx.current = current
+  } else {
+    ctx.current = current.diff ? getCurrent(ctx.current, current.diff, ctx.pageCount) : Number(current.innerHTML)
+  }
+  if (ctx.current === before) return
   render(pageMap, ctx)
   if (typeof ctx.onChange === 'function') ctx.onChange(ctx.current)
 }

@@ -1,5 +1,5 @@
 $black: #495060;
-$color-blue: #1890ff;
+$blue: #1890ff;
 
 .page-btn {
   display: inline-block;
@@ -17,10 +17,11 @@ $color-blue: #1890ff;
   user-select: none;
   list-style: none;
   cursor: pointer;
+  transition: all 0.3s;
 
   &:hover, &-active {
-    color: $color-blue;
-    border-color: $color-blue;
+    color: $blue;
+    border-color: $blue;
   }
 
   &-hidden {
@@ -36,3 +37,21 @@ $color-blue: #1890ff;
   font-family: fantasy
 }
 
+.page-quickJumper {
+  margin-left: 16px;
+  color: $black;
+  font-size: 14px;
+  &-input {
+    width: 30px;
+    line-height: 30px;
+    margin: 0 10px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    text-align: center;
+    outline:none;
+    &:hover, &:active {
+      border-color: $blue;
+    }
+  }
+}

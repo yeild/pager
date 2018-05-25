@@ -20,12 +20,12 @@
 <script>
   Pager.init({
     el: document.getElementById('pageContainer'),
-    current: 8,
-    pageSize: 10,
-    total: 120,
-    showJumper: false,
-    sizeChangeable: false,
-    showTotal: false,
+    current: 1, // 当前页数
+    pageSize: 10, // 每页显示条数
+    total: 54, // 数据总数
+    showJumper: false, // 是否显示跳转到页输入框
+    sizeChangeable: false, // 是否可选择每页显示条数
+    showTotal: false, // 是否显示数据总数
     onChange: function (current) {
       console.log(current)
     },
