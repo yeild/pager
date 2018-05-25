@@ -40,8 +40,13 @@ function createJumpPrev() {
 function createMain() {
   const fragment = document.createDocumentFragment()
   pageMap.main = []
+
+  let current = ctx.current
+  let max = ctx.pageCount
+  let start = current < 4 ? 1 : max - current < 3 ? max - 4 : current -2
+
   for (let i = 1; i <= 5; i++) {
-    let li = createPageBtn(i)
+    let li = createPageBtn(start++)
     fragment.appendChild(li)
     pageMap.main.push(li)
   }
