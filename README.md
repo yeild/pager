@@ -21,10 +21,10 @@ WHY?
 ```
 Pager.init({
     el: document.getElementById('pageContainer'), // 页面容器
-    current: 1, // 当前页数
-    pageSize: 10, // 每页显示条数
+    current: 1, // 当前页数, 默认1
+    pageSize: 10, // 每页显示条数，默认10
     total: 789, // 数据总数
-    showJumper: true, // 是否显示跳转到页输入框
+    showJumper: true, // 是否显示跳转到页输入框， 默认true
     sizeChangeable: false, // todo 是否可选择每页显示条数
     showTotal: false, // todo 是否显示数据总数
     onChange: function (current) {

@@ -2,8 +2,13 @@ import { createDOM } from './utils/createDOM'
 import  './pager.scss'
 
 class Pager {
-  constructor (opt) {
-    Object.assign(this, opt)
+  constructor ({ el, current, pageSize, total, showJumper, onChange}) {
+    this.el = el
+    this.current = current || 1
+    this.pageSize = pageSize || 10
+    this.total = total || 1
+    this.showJumper = showJumper || true
+    this.onChange = onChange
     this.pageCount = Math.ceil(this.total / this.pageSize)
   }
   init () {
