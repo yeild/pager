@@ -1,48 +1,75 @@
-/**
- *
- * @param type
- */
-function createPageCell (content, className = '') {
+import { updatePage, toggleQuickBtn } from './handler'
+
+let ctx = {}
+const pageMap = {}
+
+function createPageBtn (text, className = '') {
   const li = document.createElement('li')
-  li.className = 'page-cell ' + className
-  li.innerHTML = content
+  li.innerHTML = text
+  li.className = 'page-btn ' + className
+  if (text === ctx.current) {
+    li.className += 'page-btn-active'
+    pageMap.active = li
+  }
+  li.addEventListener('click', function (e) {
+    updatePage(e.target, pageMap, ctx)
+  })
   return li
 }
 
 function createPrev () {
-  return createPageCell('<', 'page-prev')
+  const li = createPageBtn('<', 'page-prev')
+  li.diff = -1
+  pageMap.prev = li
+  return li
 }
 
 function createHome() {
-  return createPageCell('1')
+  const li = createPageBtn('1')
+  pageMap.home = li
+  return li
 }
 
 function createJumpPrev() {
-  return createPageCell('···', 'page-jumpPrev')
+  const li = createPageBtn('···', 'page-jumpPrev')
+  li.diff = -5
+  pageMap.jumpPrev = li
+  return li
 }
 
 function createMain() {
   const fragment = document.createDocumentFragment()
+  pageMap.main = []
   for (let i = 1; i <= 5; i++) {
-    let li = createPageCell(i)
+    let li = createPageBtn(i)
     fragment.appendChild(li)
+    pageMap.main.push(li)
   }
   return fragment
 }
 
 function createJumpNext () {
-  return createPageCell('···', 'page-jumpNext')
+  const li = createPageBtn('···', 'page-jumpNext')
+  li.diff = 5
+  pageMap.jumpNext = li
+  return li
 }
 
 function createEnd() {
-  return createPageCell(10)
+  const li = createPageBtn(ctx.pageCount)
+  pageMap.end = li
+  return li
 }
 
 function createNext() {
-  return createPageCell('>', 'page-next')
+  const li = createPageBtn('>', 'page-next')
+  li.diff = 1
+  pageMap.next = li
+  return li
 }
 
-export function createDOM (pageCount) {
+export function createDOM (context) {
+  ctx = context
   const fragment = document.createDocumentFragment()
   fragment.appendChild(createPrev())
   fragment.appendChild(createHome())
@@ -51,5 +78,6 @@ export function createDOM (pageCount) {
   fragment.appendChild(createJumpNext())
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
+  toggleQuickBtn(pageMap)
   return fragment
 }

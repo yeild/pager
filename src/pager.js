@@ -7,7 +7,7 @@ class Pager {
     this.pageCount = Math.ceil(this.total / this.pageSize)
   }
   init () {
-    const pager = createDOM(this.pageCount)
+    const pager = createDOM(this)
     this.el.innerHTML = ''
     this.el.appendChild(pager)
     return this

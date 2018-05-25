@@ -13,7 +13,7 @@
 <h4><a href="https://github.com/yeild/pager">&lt; GitHub</a></h4>
 <div id="pageContainer"></div>
 <script>
-  if (!window.Page) {
+  if (!window.Pager) {
     document.write('<script src="./dist/pager.min.js"><\/script>')
   }
 </script>
@@ -22,12 +22,12 @@
     el: document.getElementById('pageContainer'),
     current: 1,
     pageSize: 10,
-    total: 100,
+    total: 120,
     showJumper: false,
     sizeChangeable: false,
     showTotal: false,
-    onChange: function () {
-      
+    onChange: function (current) {
+      console.log(current)
     },
     onSizeChange: function () {
       
