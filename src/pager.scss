@@ -50,7 +50,7 @@ $blue: #1890ff;
     border-radius: 4px;
     text-align: center;
     outline:none;
-    &:hover, &:active {
+    &:hover, &:focus {
       border-color: $blue;
     }
   }
