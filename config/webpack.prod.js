@@ -18,6 +18,6 @@ module.exports = merge(baseConfig, {
         verbose: false
       }
     ),
-    new webpack.BannerPlugin('version: ' + version + '\ndocs: https://github.com/yeild/vtree\n')
+    new webpack.BannerPlugin('version: ' + version + '\ndocs: https://github.com/yeild/pager\n')
   ]
 })

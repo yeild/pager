@@ -12,6 +12,9 @@
 <body>
 <h4><a href="https://github.com/yeild/pager">&lt; GitHub</a></h4>
 <div id="pageContainer"></div>
+<p style="color: #666">
+  第 <span id="data">1</span> 页
+</p>
 <script>
   if (!window.Pager) {
     document.write('<script src="./dist/pager.min.js"><\/script>')
@@ -22,18 +25,18 @@
     el: document.getElementById('pageContainer'),
     current: 1, // 当前页数
     pageSize: 10, // 每页显示条数
-    total: 54, // 数据总数
-    showJumper: false, // 是否显示跳转到页输入框
-    sizeChangeable: false, // 是否可选择每页显示条数
-    showTotal: false, // 是否显示数据总数
+    total: 789, // 数据总数
+    showJumper: true, // 是否显示跳转到页输入框
+    sizeChangeable: false, // todo 是否可选择每页显示条数
+    showTotal: false, // todo 是否显示数据总数
     onChange: function (current) {
-      console.log(current)
+      // $.ajax({ ... })
+      document.querySelector('#data').innerHTML = current
     },
     onSizeChange: function () {
-      
+      // todo
     }
   })
-
 </script>
 </body>
 </html>

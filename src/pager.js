@@ -14,10 +14,6 @@ class Pager {
   }
 }
 window.Pager = {
-  /**
-   * @param opt { element,  }
-   * @returns vTree instance
-   */
   init (opt){
     return new Pager(opt).init()
   }

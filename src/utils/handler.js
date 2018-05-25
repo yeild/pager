@@ -1,13 +1,5 @@
-import { $ } from './selector'
-import { addClass, removeClass, toggleClass } from './classes'
+import { addClass, removeClass } from './classes'
 
-/**
- * get current page number
- * @param current
- * @param diff
- * @param max
- * @returns {*}
- */
 function getCurrent(current, diff, max) {
   const min = 1
   const after = current + diff

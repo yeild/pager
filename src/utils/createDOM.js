@@ -116,7 +116,7 @@ export function createDOM (context) {
   fragment.appendChild(createJumpNext())
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
-  fragment.appendChild(createQuickJumper())
+  ctx.showJumper && fragment.appendChild(createQuickJumper())
   toggleQuickBtn(pageMap)
   return fragment
 }
