@@ -4,9 +4,9 @@ import  './pager.scss'
 class Pager {
   constructor ({ el, current, pageSize, total, showJumper, onChange, hideOnSinglePage}) {
     this.el = el
-    this.current = current || 1
-    this.pageSize = pageSize || 10
-    this.total = total || 1
+    this.current = Number(current) || 1
+    this.pageSize = Number(pageSize) || 10
+    this.total = Number(total) > 0 ? Number(total) : 1
     this.showJumper = showJumper || true
     this.hideOnSinglePage = hideOnSinglePage || false
     this.onChange = onChange
