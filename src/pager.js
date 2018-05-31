@@ -2,19 +2,22 @@ import { createDOM } from './utils/createDOM'
 import  './pager.scss'
 
 class Pager {
-  constructor ({ el, current, pageSize, total, showJumper, onChange}) {
+  constructor ({ el, current, pageSize, total, showJumper, onChange, hideOnSinglePage}) {
     this.el = el
     this.current = current || 1
     this.pageSize = pageSize || 10
     this.total = total || 1
     this.showJumper = showJumper || true
+    this.hideOnSinglePage = hideOnSinglePage || false
     this.onChange = onChange
     this.pageCount = Math.ceil(this.total / this.pageSize)
   }
   init () {
-    const pager = createDOM(this)
     this.el.innerHTML = ''
-    this.el.appendChild(pager)
+    if (!(this.hideOnSinglePage && this.pageCount <= 1)) {
+      const pager = createDOM(this)
+      this.el.appendChild(pager)
+    }
     return this
   }
 }
