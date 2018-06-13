@@ -1,24 +1,25 @@
 import { updatePage, toggleQuickBtn } from './handler'
-import { addClass } from './classes'
+import { addClass, removeClass, toggleClass } from './classes'
+import { getSiblings } from './selector'
 
 let ctx = {}
 const pageMap = {}
 
 function createPageBtn (text, className = '') {
-  const li = document.createElement('li')
-  li.innerHTML = text
-  li.className = 'page-btn ' + className
+  const span = document.createElement('span')
+  span.innerHTML = text
+  span.className = 'page-btn ' + className
   if (text === ctx.current) {
-    li.className += 'page-btn-active'
-    pageMap.active = li
+    span.className += 'page-btn-active'
+    pageMap.active = span
   }
   if (text > ctx.pageCount) {
-    addClass(li, 'page-btn-hidden')
+    addClass(span, 'page-btn-hidden')
   }
-  li.addEventListener('click', function (e) {
+  span.addEventListener('click', function (e) {
     updatePage(e.target, pageMap, ctx)
   })
-  return li
+  return span
 }
 
 function createPrev () {
@@ -106,6 +107,34 @@ function createQuickJumper() {
   return span
 }
 
+function createSizeChanger() {
+  const span = document.createElement('span')
+  span.className = 'page-sizeChanger'
+  span.innerHTML = '10 条/页'
+  span.addEventListener('click', function () {
+    toggleClass(span, 'page-sizeChanger-active')
+  })
+  const ul = document.createElement('ul')
+  ul.className = 'page-sizeChanger-ul'
+  for (let i = 1; i < 5; i++) {
+    const li = document.createElement('li')
+    li.innerHTML = i * 10 + ' 条/页'
+    if (i * 10 === ctx.pageSize) addClass(li, 'page-sizeChanger-li-active')
+    li.addEventListener('click', function () {
+      getSiblings(li, 'LI').forEach(function (i) {
+        removeClass(i, 'page-sizeChanger-li-active')
+      })
+      span.firstChild.nodeValue = i * 10 + ' 条/页'
+      ctx.pageSize = i * 10
+      ctx.init()
+      addClass(li, 'page-sizeChanger-li-active')
+    })
+    ul.appendChild(li)
+  }
+  span.appendChild(ul)
+  return span
+}
+
 export function createDOM (context) {
   ctx = context
   const fragment = document.createDocumentFragment()
@@ -116,6 +145,7 @@ export function createDOM (context) {
   fragment.appendChild(createJumpNext())
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
+  ctx.sizeChangeable && fragment.appendChild(createSizeChanger())
   ctx.showJumper && fragment.appendChild(createQuickJumper())
   toggleQuickBtn(pageMap)
   return fragment
