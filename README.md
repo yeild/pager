@@ -25,14 +25,13 @@ Pager.init({
     pageSize: 10, // 每页显示条数，默认10
     total: 789, // 数据总数
     showJumper: true, // 是否显示跳转到页输入框， 默认true
-    sizeChangeable: false, // todo 是否可选择每页显示条数
-    showTotal: false, // todo 是否显示数据总数
-    onChange: function (current) {
-      // $.ajax({ ... })
-      document.querySelector('#data').innerHTML = current
+    sizeChangeable: false, // 是否可选择每页显示条数, 默认false
+    showTotal: false, // 是否显示数据总数, 默认false
+    onChange: function (current, size) {
+      console.log(current, size)
     },
-    onSizeChange: function () {
-      // todo
+    onSizeChange: function (current, size) {
+      console.log(current, size)
     }
   })
 ```
