@@ -139,6 +139,13 @@ function createSizeChanger() {
   return span
 }
 
+function createShowTotal() {
+  const span = document.createElement('span')
+  span.innerHTML = '共 ' + ctx.total + ' 条数据'
+  span.className = 'page-show-total'
+  return span
+}
+
 export function createDOM (context) {
   ctx = context
   const fragment = document.createDocumentFragment()
@@ -150,6 +157,7 @@ export function createDOM (context) {
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
   ctx.sizeChangeable && fragment.appendChild(createSizeChanger())
+  ctx.showTotal && fragment.appendChild(createShowTotal())
   ctx.showJumper && fragment.appendChild(createQuickJumper())
   toggleQuickBtn(pageMap)
   return fragment
