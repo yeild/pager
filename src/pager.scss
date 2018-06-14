@@ -7,7 +7,7 @@ $blue: #1890ff;
   height: 30px;
   line-height: 30px;
   margin-right: 6px;
-  font-size: 14px;
+  font-size: 12px;
   font-family: Arial;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
@@ -38,12 +38,13 @@ $blue: #1890ff;
 }
 
 .page-quickJumper {
-  margin-left: 16px;
+  margin-left: 10px;
   color: $black;
-  font-size: 14px;
+  font-size: 12px;
   &-input {
     width: 30px;
     line-height: 30px;
+    font-size: 12px;
     margin: 0 10px;
     padding: 0 10px;
     border: 1px solid #d9d9d9;
@@ -63,7 +64,7 @@ $blue: #1890ff;
   line-height: 30px;
   padding-right: 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #495060;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
@@ -110,16 +111,16 @@ $blue: #1890ff;
   padding: 5px 15px 5px 0;
   cursor: pointer;
   &:hover {
-    background: #E6F7FF;
+    background: #F3F3F3;
   }
-  &-active {
-    background: #FAFAFA;
-    color: black;
+  &-active, &-active:hover {
+    background: #1890ff;
+    color: white;
   }
 }
 
 .page-show-total {
-  font-size: 14px;
+  font-size: 12px;
   color: #495060;
   margin-left: 10px;
 }
