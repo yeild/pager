@@ -52,5 +52,5 @@ export function updatePage (current, pageMap, ctx) {
   }
   if (ctx.current === before) return
   render(pageMap, ctx)
-  if (typeof ctx.onChange === 'function') ctx.onChange(ctx.current)
+  if (typeof ctx.onChange === 'function') ctx.onChange(ctx.current, ctx.pageSize)
 }

@@ -110,7 +110,7 @@ function createQuickJumper() {
 function createSizeChanger() {
   const span = document.createElement('span')
   span.className = 'page-sizeChanger'
-  span.innerHTML = '10 条/页'
+  span.innerHTML = ctx.pageSize + ' 条/页'
   span.addEventListener('click', function () {
     toggleClass(span, 'page-sizeChanger-active')
   })
@@ -119,15 +119,19 @@ function createSizeChanger() {
   for (let i = 1; i < 5; i++) {
     const li = document.createElement('li')
     li.innerHTML = i * 10 + ' 条/页'
+    li.className = 'page-sizeChanger-li'
     if (i * 10 === ctx.pageSize) addClass(li, 'page-sizeChanger-li-active')
     li.addEventListener('click', function () {
       getSiblings(li, 'LI').forEach(function (i) {
         removeClass(i, 'page-sizeChanger-li-active')
       })
       span.firstChild.nodeValue = i * 10 + ' 条/页'
+      console.log(span.firstChild)
+      ctx.current = 1
       ctx.pageSize = i * 10
       ctx.init()
       addClass(li, 'page-sizeChanger-li-active')
+      ctx.onSizeChange && ctx.onSizeChange(ctx.current, ctx.pageSize)
     })
     ul.appendChild(li)
   }

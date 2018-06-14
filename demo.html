@@ -12,9 +12,6 @@
 <body>
 <h4><a href="https://github.com/yeild/pager">&lt; GitHub</a></h4>
 <div id="pageContainer"></div>
-<p style="color: #666">
-  第 <span id="data">1</span> 页
-</p>
 <script>
   if (!window.Pager) {
     document.write('<script src="./dist/pager.min.js"><\/script>')
@@ -28,14 +25,13 @@
     total: 789, // 数据总数
     showJumper: true, // 是否显示跳转到页输入框， 默认true
     hideOnSinglePage: true, // 只有一页时是否隐藏分页器，默认false
-    sizeChangeable: true, // todo 是否可选择每页显示条数
+    sizeChangeable: true, // 是否可选择每页显示条数
     showTotal: false, // todo 是否显示数据总数
-    onChange: function (current) {
-      // $.ajax({ ... })
-      document.querySelector('#data').innerHTML = current
+    onChange: function (current, size) {
+      console.log(current, size)
     },
-    onSizeChange: function () {
-      // todo
+    onSizeChange: function (current, size) {
+      console.log(current, size)
     }
   })
 </script>
