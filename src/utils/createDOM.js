@@ -149,6 +149,7 @@ function createShowTotal() {
 export function createDOM (context) {
   ctx = context
   const fragment = document.createDocumentFragment()
+  ctx.showTotal && fragment.appendChild(createShowTotal())
   fragment.appendChild(createPrev())
   fragment.appendChild(createHome())
   fragment.appendChild(createJumpPrev())
@@ -157,7 +158,6 @@ export function createDOM (context) {
   fragment.appendChild(createEnd())
   fragment.appendChild(createNext())
   ctx.sizeChangeable && fragment.appendChild(createSizeChanger())
-  ctx.showTotal && fragment.appendChild(createShowTotal())
   ctx.showJumper && fragment.appendChild(createQuickJumper())
   toggleQuickBtn(pageMap)
   return fragment

@@ -7,7 +7,7 @@ $blue: #1890ff;
   height: 30px;
   line-height: 30px;
   margin-right: 6px;
-  font-size: 12px;
+  font-size: 14px;
   font-family: Arial;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
@@ -40,11 +40,11 @@ $blue: #1890ff;
 .page-quickJumper {
   margin-left: 10px;
   color: $black;
-  font-size: 12px;
+  font-size: 14px;
   &-input {
     width: 30px;
     line-height: 30px;
-    font-size: 12px;
+    font-size: 14px;
     margin: 0 10px;
     padding: 0 10px;
     border: 1px solid #d9d9d9;
@@ -64,7 +64,7 @@ $blue: #1890ff;
   line-height: 30px;
   padding-right: 15px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: #495060;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
@@ -122,5 +122,5 @@ $blue: #1890ff;
 .page-show-total {
   font-size: 12px;
   color: #495060;
-  margin-left: 10px;
+  margin-right: 10px;
 }
