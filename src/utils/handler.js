@@ -9,7 +9,7 @@ function getCurrent(current, diff, max) {
 }
 
 function renderMain(main, current, max) {
-  let start = current < 4 ? 1 : max - current < 3 ? max - 4 : current -2
+  let start = current < 5 ? 1 : max - current < 3 ? max - 4 : current -2
   main.forEach(i => {
     i.innerHTML = start++
   })
