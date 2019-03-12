@@ -1,12 +1,9 @@
 # pager
 pager 分页插件
 
-[![](http://ooqymz3vm.bkt.clouddn.com/pager.png)](https://yeild.github.io/pager/demo.html)
+[![](![](https://img2018.cnblogs.com/blog/1150501/201903/1150501-20190312163535099-1532371672.png))](https://yeild.github.io/pager/demo.html)
 
-WHY?
-
-  一些项目使用jquery开发，需要用到分页插件，然而网上搜到的分页插件要么样式不够美观，要么功能不够丰富，要么接口设计太难用，而且还需要单独引入css文件。 于是参考antd的样式和交互，
-  做了这个分页插件。
+  一些项目使用jquery开发，需要用到分页插件，然而网上搜到的分页插件要么样式不够美观，要么功能不够丰富，要么接口设计太难用，而且还需要单独引入css文件。 于是遵循ant design实现了这个分页插件。
 
 ### 用法
 
